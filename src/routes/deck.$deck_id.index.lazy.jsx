@@ -13,6 +13,7 @@ import {
     Typography,
 } from "@mui/material";
 import { useState } from "react";
+import Loading from "../Loading";
 
 export const Route = createLazyFileRoute("/deck/$deck_id/")({
     component: DeckCards,
@@ -22,6 +23,7 @@ export const Route = createLazyFileRoute("/deck/$deck_id/")({
             await queryClient.ensureQueryData(cardsQueryOptions);
         };
     },
+  pendingComponent: Loading,
 });
 
 function DeckCards() {

@@ -4,12 +4,14 @@ import { useMutation, useSuspenseQuery } from '@tanstack/react-query';
 import { decksQueryOptions } from '../decksQueryOptions';
 import { deleteDeck } from '../service/decks';
 import { Avatar, Button, Divider, IconButton, List, ListItem, ListItemAvatar, ListItemText } from '@mui/material';
+import Loading from '../Loading';
 
 export const Route = createLazyFileRoute('/')({
   component: Index,
   loader: ({context: {queryClient}}) => {
     return queryClient.ensureQueryData(decksQueryOptions);
   },
+  pendingComponent: Loading,
 })
 
 function Index() {

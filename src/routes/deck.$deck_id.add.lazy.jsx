@@ -1,9 +1,11 @@
 import { Link, createLazyFileRoute } from '@tanstack/react-router'
 import { addCard } from '../service/cards';
 import { Button, Card, TextField } from '@mui/material';
+import Loading from '../Loading';
 
 export const Route = createLazyFileRoute('/deck/$deck_id/add')({
   component: Add,
+  pendingComponent: Loading,
 })
 
 function Add() {
